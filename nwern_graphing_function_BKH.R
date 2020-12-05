@@ -2,12 +2,13 @@
 
 rh_flux_hgt <- readxl::read_excel("RedHills_DIMA_Flux_output_Dec2020.xlsx", sheet = "Aeolian")
 
-head(rf_flux_hgt)
+#head(rf_flux_hgt)
 
 ### lets create a function????
 
 nwern_graphing = function(x, do.NULL = TRUE)
 {
+  ## Delete unnecessary columns and rename
   if (is.data.frame(x))
   x[,c(2,5,9,11,12,13)] = NULL
   colnames(x) [c(3:7)] = c("Height (cm)", "Deployed", "Collected", "Weight", "Flux_cm2")
@@ -53,7 +54,7 @@ nwern_graphing = function(x, do.NULL = TRUE)
           axis.text.x = element_text(angle = 40, hjust = 1, size = 10, color = "black"),
           axis.title.x = element_blank(),
           strip.text = element_text(size = 12),
-          panel.border = element_rect(colour = "black", fill=NA, size=0.5))
+          panel.border = element_rect(colour = "black", fill = NA, size = 0.5))
   
   return(graph)
 }
@@ -63,5 +64,3 @@ nwern_graphing(x = rh_flux_hgt)
 tv_flux_hgt <- readxl::read_excel("TwinValley_DIMA_Flux_output_Dec2020.xlsx", sheet = "Aeolian")
 
 nwern_graphing(x = tv_flux_hgt)
-
-unique(tv_flux_hgt$`Date Sample Collected`)
