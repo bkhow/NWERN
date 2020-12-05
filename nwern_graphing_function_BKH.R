@@ -2,13 +2,12 @@
 
 rh_flux_hgt <- readxl::read_excel("RedHills_DIMA_Flux_output_Dec2020.xlsx", sheet = "Aeolian")
 
-#head(rf_flux_hgt)
+head(rh_flux_hgt)
 
 ### lets create a function????
 
 nwern_graphing = function(x, do.NULL = TRUE)
 {
-  ## Delete unnecessary columns and rename
   if (is.data.frame(x))
   x[,c(2,5,9,11,12,13)] = NULL
   colnames(x) [c(3:7)] = c("Height (cm)", "Deployed", "Collected", "Weight", "Flux_cm2")
@@ -21,13 +20,17 @@ nwern_graphing = function(x, do.NULL = TRUE)
 
   library(dplyr)
   
-  #I think I'll need to average first within block, then among blocks?? 
-  flux_graph = x %>%
+  x_block = x %>%
+    tidyr::separate("Location", into = c("block", "num"), sep = 1) %>%
+    group_by(Site, Collected, Deployed, `Height (cm)`, block) %>%
+    summarise(flux_m2 = mean(flux_m,  na.rm = T))
+  
+  flux_graph = x_block %>%
     group_by(Site, Deployed, Collected, `Height (cm)`) %>%
     summarise(
-      Flux_m2 = mean(flux_m,  na.rm = T),
-      sd.flux = sd(flux_m, na.rm = T),
-      se.flux = sd(flux_m, na.rm=T)/sqrt(length(flux_m[!is.na(flux_m)])))
+      Flux_m2 = mean(flux_m2,  na.rm = T),
+      sd.flux = sd(flux_m2, na.rm = T),
+      se.flux = sd(flux_m2, na.rm=T)/sqrt(length(flux_m2[!is.na(flux_m2)])))
   
   flux_graph$`Height (cm)` = as.factor(flux_graph$`Height (cm)`)
   
@@ -54,7 +57,7 @@ nwern_graphing = function(x, do.NULL = TRUE)
           axis.text.x = element_text(angle = 40, hjust = 1, size = 10, color = "black"),
           axis.title.x = element_blank(),
           strip.text = element_text(size = 12),
-          panel.border = element_rect(colour = "black", fill = NA, size = 0.5))
+          panel.border = element_rect(colour = "black", fill=NA, size=0.5))
   
   return(graph)
 }
