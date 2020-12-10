@@ -15,9 +15,13 @@ and replace SIZE with the inlet size of the dust trap you are using.
 
 usage: python mwac_int.py -i inputfile.txt -o outputfile.txt HEIGHT SIZE
 
-For Red Hills, usage will be (this will go into the Command prompt, after changing the directory):
+For Red Hills, the Comand prompt will look something like this:
 
-python mwac_int.py -i redhillsinput.txt -o redhillsoutput.txt 1 0.0002395
+C:\Users\Howard> cd C:\Users\Administrator\Documents\NWERN\NWERN_Analysis\flux_integration
+
+then usage will be the next line after changing your directory:
+
+C:\Users\Administrator\Documents\NWERN\NWERN_Analysis\flux_integration> python mwac_int.py -i redhillsinput.txt -o redhillsoutput.txt 1 0.0002395
 
 If no errors occur, you will find the exported file with the name you choose in the working folder.
 
