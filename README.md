@@ -10,9 +10,11 @@ Next, I will include Brandon Edwards Python flux integration program with a few 
 We should have a discussion on criteria to reject integrated flux values because of poor fit (low R^2), and contrast advantages of presenting/analyzing integrated values over other expressions of horizontal flux.
 
 
-WORK FLOW
+## WORK FLOW
 
 ---- importing sediment weights ----
+
+Proabably easiest to just download this entire GitHub library and make this folder your Working Directory in a new R-project.
 
 1. Unzip "DIMA 5.5a as of 2020-06-02.zip"
 2. In most older versions of DIMA, the zip folder includes DIMA's import templates to import data from non-DIMA sources, but I included the Aeolian Flux template in here. This is the format necessary to import from Excel to the database, and also the format of "RH_DIMA_import_Dec2020.xlsx" and "TV_DIMA_import_Dec2020.xlsx" which contain data from Nevada's Red Hills and Twin Valley NWERN sites.
@@ -31,3 +33,8 @@ WORK FLOW
 5. Click "Aeolian Sediment Flux Data" with Excel as the output format.
 6. Click "Go..." !
 7. Save this file into your working folder, and this will be imported AS IS into R-studio.
+
+---- create graphs of horizontal sediment flux in R ----
+there may be some packages you will have to install in R for the function to work properly
+
+1. Open "nwern_graphing_function_BKH.R"
