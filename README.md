@@ -12,7 +12,7 @@ We should have a discussion on criteria to reject integrated flux values because
 
 ## WORK FLOW
 
----- importing sediment weights ----
+### importing sediment weights ----
 
 Proabably easiest to just download this entire GitHub library and make this folder your Working Directory in a new R-project.
 
@@ -25,7 +25,7 @@ Proabably easiest to just download this entire GitHub library and make this fold
 7. Click "Do Import..."
 8. If there are no errors, proceed with import and then your data should be in DIMA!
 
----- exporting sediment flux ----
+### exporting sediment flux ----
 1. At the DIMA homescreen, clock on "Reports" under Data.
 2. Click "Reset" on the Date Range at the top of the Report Manager.
 3. In "Select Method", click "Aeolian Sediment Collection".
@@ -34,7 +34,7 @@ Proabably easiest to just download this entire GitHub library and make this fold
 6. Click "Go..." !
 7. Save this file into your working folder, and this will be imported AS IS into R-studio.
 
----- create graphs of horizontal sediment flux in R ----
+### create graphs of horizontal sediment flux in R ----
 there may be some packages you will have to install in R for the function to work properly
 
 1. Open "nwern_graphing_function_BKH.R"
