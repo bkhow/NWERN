@@ -36,6 +36,7 @@ nwern_graphing = function(x, do.NULL = TRUE)
   
   flux_graph$`Height (cm)` = as.factor(flux_graph$`Height (cm)`)
   
+  #create a data frame to graphically show when site was established, and each time a collection occurred
   dates_collect = data.frame(site = rep(flux_graph$Site), date = flux_graph$Collected, deploy = flux_graph$Deployed)
   
   mind = min(as.Date(flux_graph$Deployed))
