@@ -1,7 +1,7 @@
 #Import your data sheet from DIMA as is
 
-RH_DIMA_export_December082020 <- read_excel("RH_DIMA_export_December082020.xlsx", sheet = "Aeolian")
-TV_DIMA_export_December082020 <- read_excel("TV_DIMA_export_December082020.xlsx", sheet = "Aeolian")
+RH_DIMA_export_December082020 <- readxl::read_excel("RH_DIMA_export_December082020.xlsx", sheet = "Aeolian")
+TV_DIMA_export_December082020 <- readxl::read_excel("TV_DIMA_export_December082020.xlsx", sheet = "Aeolian")
 
 ### lets create a function????
 
