@@ -27,7 +27,7 @@ If no errors occur, you will find the exported file with the name you choose in 
 
 If you run into problems with python not finding the correct packages (i.e. numpy, scipy), you must use “pip” to install these libraries (I think it’s easiest to do this into the working folder). 
 
-I.e. pip install numpy
+I.e. C:\Users\Administrator\Documents\NWERN\NWERN_Analysis\flux_integration> pip install numpy
 
 [end BKH]
 
