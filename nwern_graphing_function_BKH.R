@@ -1,30 +1,32 @@
 #Import your data sheet from DIMA as is
 
-rh_flux_hgt <- readxl::read_excel("RedHills_DIMA_Flux_output_Dec2020.xlsx", sheet = "Aeolian")
-
-head(rh_flux_hgt)
+RH_DIMA_export_December082020 <- read_excel("RH_DIMA_export_December082020.xlsx", sheet = "Aeolian")
+TV_DIMA_export_December082020 <- read_excel("TV_DIMA_export_December082020.xlsx", sheet = "Aeolian")
 
 ### lets create a function????
 
 nwern_graphing = function(x, do.NULL = TRUE)
 {
   if (is.data.frame(x))
-  x[,c(2,5,9,11,12,13)] = NULL
-  colnames(x) [c(3:7)] = c("Height (cm)", "Deployed", "Collected", "Weight", "Flux_cm2")
+  
+  x[,c("Plot", "Type of sampler", "Sample Archived", "Notes", "Sample Compromised", "Sediment g/day")] = NULL
+  colnames(x) [c(3:8)] = c("Height (cm)", "Deployed", "Collected", "Weight", "Period", "Flux_cm2_day")
   
   #This helps with graphing later
   x$Collected = as.Date(x$Collected)
   
   #create column to scale flux to g/m2/day
-  x$flux_m = x$Flux_cm2 * 10000
+  x$flux_m = x$Flux_cm2_day * 10000
 
   library(dplyr)
   
+  #average height within blocks
   x_block = x %>%
     tidyr::separate("Location", into = c("block", "num"), sep = 1) %>%
     group_by(Site, Collected, Deployed, `Height (cm)`, block) %>%
     summarise(flux_m2 = mean(flux_m,  na.rm = T))
   
+  #average among blocks
   flux_graph = x_block %>%
     group_by(Site, Deployed, Collected, `Height (cm)`) %>%
     summarise(
@@ -35,6 +37,7 @@ nwern_graphing = function(x, do.NULL = TRUE)
   flux_graph$`Height (cm)` = as.factor(flux_graph$`Height (cm)`)
   
   dates_collect = data.frame(site = rep(flux_graph$Site), date = flux_graph$Collected, deploy = flux_graph$Deployed)
+  
   mind = min(as.Date(flux_graph$Deployed))
   maxd = max(as.Date(flux_graph$Collected))
   
@@ -62,8 +65,7 @@ nwern_graphing = function(x, do.NULL = TRUE)
   return(graph)
 }
 
-nwern_graphing(x = rh_flux_hgt)
 
-tv_flux_hgt <- readxl::read_excel("TwinValley_DIMA_Flux_output_Dec2020.xlsx", sheet = "Aeolian")
+nwern_graphing(x = RH_DIMA_export_December082020)
 
-nwern_graphing(x = tv_flux_hgt)
+nwern_graphing(x = TV_DIMA_export_December082020)
