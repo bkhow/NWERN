@@ -38,3 +38,10 @@ Proabably easiest to just download this entire GitHub library and make this fold
 there may be some packages you will have to install in R for the function to work properly
 
 1. Open "nwern_graphing_function_BKH.R"
+2. Making sure your excel report is in your working folder (i.e. "RedHills_DIMA_Flux_output_Dec2020.xlsx"), import your data as shown in the code.
+3. Run the function to load into your global environment.
+4. Enter your data into the function...
+
+nwern_graphing(x = datafromDIMA)
+
+and out should pop a graph!
