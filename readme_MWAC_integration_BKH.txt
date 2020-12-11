@@ -1,5 +1,7 @@
 Process mwac data for NWERN sites
 
+[to export this sheet from DIMA, follow the same process as exporting the Excel report (in the original "readme" file), but instead export the flux integration option]
+
 Make sure and remove the last row of "999" and extra space up to the last data value in input file before use *will eventually try and figure this out...
 
 Easiest use: add the text file to the folder that contains the code, or vice versa
