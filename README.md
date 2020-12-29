@@ -1,5 +1,5 @@
 # NWERN
-Work flow for NWERN meteorological and flux data
+Work flow for NWERN flux data and meteorological  
 -------------
 -------------
 These files include examples of importing aeolian sediment flux weights into DIMA, exporting a report from DIMA, then taking the DIMA report into an R function that will build site specific line graphs of sediment flux at four heights over time. 
@@ -10,7 +10,7 @@ Next, I will include Brandon Edwards Python flux integration program with a few 
 We should have a discussion on criteria to reject integrated flux values because of poor fit (low R^2), and contrast advantages of presenting/analyzing integrated values over other expressions of horizontal flux.
 
 
-## WORK FLOW
+## WORK FLOW for Sediment Flux
 
 ### importing sediment weights ----
 
@@ -45,3 +45,23 @@ there may be some packages you will have to install in R for the function to wor
 nwern_graphing(x = datafromDIMA)
 
 and out should pop a graph!
+
+## Meteorlogical Summary Workflow
+I designed this these functions to work with the data format downloaded from https://winderosionnetwork.org/data-portal/public-data
+
+1. From the www.winderosionnetwork.org, navigate to "Data Portal" and click "Public Data Products"
+2. Find the site you are interested in summarizing, and click on "Current Data"
+3. These files are large, so be sure to allow enough time to load all records before saving (0.5 to 1 minute)
+  a. If you want records before "2020-01-01", contact Ericha Courtright
+4. Right click anywhere in the window, and click "Save As"
+  a. Save this file into your R working directory for this project
+  b. It will be something like "MandanTable1.dat.txt"
+5. No pre-import manipulation is necessary, so now we will import this data table into R
+
+6. From R-studio, click "Import Dataset", and use "From Text (base)...", then select the dataset you want to summarize
+7. R should deduce most everything correctly on how to separate the columns. 
+  a. MAKE SURE THAT THE HEADING OPTION IS ON "NO" ! (i.e. header = FALSE)
+  b. the import code will be something like: 
+      MandanTable1.dat <- read.csv("~/NWERN/NWERN_Analysis/MandanTable1.dat.txt", header=FALSE)
+8. Upload "meteorlogical_functions_final.R" into your global environment
+9.
