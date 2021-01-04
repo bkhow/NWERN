@@ -57,12 +57,12 @@ I designed this these functions to work with the data format downloaded from htt
 4b. It will be something like "MandanTable1.dat.txt"
 5. No pre-import manipulation is necessary, so now we will import this data table into R
 6. From R-studio, click "Import Dataset", and use "From Text (base)...", then select the dataset you want to summarize
-6a. R should deduce most everything correctly on how to separate the columns. 
-6b. MAKE SURE THAT THE HEADING OPTION IS ON "NO" ! (i.e. header = FALSE)
-6c. the import code will be something like: 
-      MandanTable1 <- read.csv("~/NWERN/NWERN_Analysis/MandanTable1.dat.txt", header=FALSE)
+R should deduce most everything correctly on how to separate the columns. 
+MAKE SURE THAT THE HEADING OPTION IS ON "NO" ! (i.e. header = FALSE)
+the import code will be something like: 
+MandanTable1 <- read.csv("~/NWERN/NWERN_Analysis/MandanTable1.dat.txt", header=FALSE)
 7. Open "meteorlogical_functions_final.R" within Rstudio
 8. Run "daily_means" and "daily_graph" into your Global Environment
 9. Then in R, > mandan.daily <- daily_means(MandanTable1); this will take time to run (0.5 to 1.0 minutes)
 10. > daily_graph(mandan.daily, y = "Total_Rain_mm")
-10a. alternatively, see the code to use column position from the "met_variables" character vector
+alternatively, see the code to use column position from the "met_variables" character vector
